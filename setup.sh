@@ -37,7 +37,7 @@ echo "==================================="
 
 # Run Cloudflare Tunnel on port 6009
 echo "[*] Starting Cloudflare Tunnel on port 6009..."
-cloudflared tunnel --url http://localhost:6009 > cloudflared.log 2>&1 &
+cloudflared tunnel --url tcp://localhost:6009 > cloudflared.log 2>&1 &
 sleep 5
 
 # Extract public URL
