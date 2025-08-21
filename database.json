@@ -50,8 +50,8 @@
     },
     "user_plan": [
         {
-            "username": "phuvanduc",
-            "password": "phuvanduc",
+            "username": "root",
+            "password": "root",
             "conc": 15,
             "cooldown": 0,
             "time": 16000,
