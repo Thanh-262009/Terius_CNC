@@ -2,77 +2,26 @@
 set -e
 
 echo "==================================="
-echo "   Auto Setup Python, Node.js, Cloudflare Tunnel"
+echo "   Auto Setup Python, Node.js, Cloudflare Tunnel (Ubuntu/Debian)"
 echo "==================================="
 
-# Detect OS
-if [ -f /etc/debian_version ]; then
-    OS="debian"
-elif [ -f /etc/redhat-release ]; then
-    OS="redhat"
-elif [ -f /etc/alpine-release ]; then
-    OS="alpine"
-else
-    OS="unknown"
-fi
+# Update system
+echo "[*] Updating apt..."
+sudo apt update -y
+sudo apt upgrade -y
 
-echo "Detected OS: $OS"
+# Install Python
+echo "[*] Installing Python..."
+sudo apt install -y python3 python3-pip
 
-# Update & install
-case $OS in
-    debian)
-        echo "[*] Updating apt..."
-        sudo apt update -y
-        sudo apt upgrade -y
+# Install Node.js 20.x
+echo "[*] Installing Node.js..."
+curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+sudo apt install -y nodejs build-essential
 
-        echo "[*] Installing Python..."
-        sudo apt install -y python3 python3-pip
-
-        echo "[*] Installing Node.js..."
-        curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
-        sudo apt install -y nodejs build-essential
-
-        echo "[*] Installing Cloudflared..."
-        wget -q https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb
-        sudo dpkg -i cloudflared-linux-amd64.deb || sudo apt -f install -y
-        ;;
-    redhat)
-        echo "[*] Updating yum..."
-        sudo yum update -y
-
-        echo "[*] Installing Python..."
-        sudo yum install -y python3 python3-pip
-
-        echo "[*] Installing Node.js..."
-        curl -fsSL https://rpm.nodesource.com/setup_20.x | sudo bash -
-        sudo yum install -y nodejs gcc-c++ make
-
-        echo "[*] Installing Cloudflared..."
-        wget -q https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-x86_64.rpm
-        sudo rpm -i cloudflared-linux-x86_64.rpm
-        ;;
-    alpine)
-        echo "[*] Updating apk..."
-        sudo apk update
-        sudo apk upgrade
-
-        echo "[*] Installing Python..."
-        sudo apk add --no-cache python3 py3-pip
-
-        echo "[*] Installing Node.js..."
-        sudo apk add --no-cache nodejs npm
-
-        echo "[*] Installing Cloudflared..."
-        wget -q https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-arm64
-        mv cloudflared-linux-arm64 cloudflared
-        chmod +x cloudflared
-        sudo mv cloudflared /usr/local/bin/
-        ;;
-    *)
-        echo "Unsupported OS. Please install manually."
-        exit 1
-        ;;
-esac
+# Install Cloudflared
+echo "[*] Installing Cloudflared..."
+wget -q https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64
 
 # Verify install
 echo "==================================="
