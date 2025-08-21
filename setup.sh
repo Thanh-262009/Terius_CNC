@@ -21,7 +21,9 @@ sudo apt install -y nodejs build-essential
 
 # Install Cloudflared
 echo "[*] Installing Cloudflared..."
-wget -q https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64
+wget -q https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 -O cloudflared
+chmod +x cloudflared
+sudo mv cloudflared /usr/local/bin/
 
 # Verify install
 echo "==================================="
