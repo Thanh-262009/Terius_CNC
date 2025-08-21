@@ -1,0 +1,11 @@
+import os
+print("Terius Setup Tool | @tretraunetwork | Read File 'en.md' or 'tut.md' For How Usage")
+os.system(f"npm install colors --no-bin-links --unsafe-perm")
+os.system(f"npm install chalk@2 --no-bin-links --unsafe-perm")
+os.system(f"npm install node-fetch --no-bin-links --unsafe-perm")
+os.system(f"npm install set-cookie-parser --no-bin-links --unsafe-perm")
+os.system(f"npm install user-agents --no-bin-links --unsafe-perm")
+os.system(f"npm install hpack --no-bin-links --unsafe-perm")
+os.system(f"npm install randomstring --no-bin-links --unsafe-perm")
+os.system(f"npm install sockopt --no-bin-links --unsafe-perm")
+os.system(f"pip install rich")

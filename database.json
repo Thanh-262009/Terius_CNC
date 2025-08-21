@@ -1,0 +1,63 @@
+{
+    "plans": {
+        "Basic": {
+            "max_time": 60,
+            "cooldown": 60,
+            "max_conc": 5,
+            "methods": [
+                "https-spam",
+                "https-destroy"
+            ]
+        },
+        "Premium": {
+            "max_time": 120,
+            "cooldown": 30,
+            "max_conc": 10,
+            "methods": [
+                "https-spam",
+                "https-destroy",
+                "https-super",
+                "https-bypass"
+            ]
+        },
+        "Plus": {
+            "max_time": 90,
+            "cooldown": 45,
+            "max_conc": 8,
+            "methods": [
+                "https-spam",
+                "https-destroy",
+                "https-super",
+                "https-bypass",
+                "https-light",
+                "https-star"
+            ]
+        },
+        "Admin": {
+            "max_time": 150,
+            "cooldown": 20,
+            "max_conc": 15,
+            "methods": [
+                "https-spam",
+                "https-destroy",
+                "https-super",
+                "https-bypass",
+                "https-light",
+                "https-star",
+                "https-killer"
+            ]
+        }
+    },
+    "user_plan": [
+        {
+            "username": "phuvanduc",
+            "password": "phuvanduc",
+            "conc": 15,
+            "cooldown": 0,
+            "time": 16000,
+            "plan": "Admin",
+            "expiry": "2026-12-31",
+            "blacklist": false
+        }
+    ]
+}
